@@ -11,6 +11,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+import Card from "@/components/ui/custom/card";
 
 interface Enrolled {
     enrollmentNumber: string;
@@ -28,6 +29,14 @@ interface BestStudent {
     fees: number;
     registrationDate: string;
 }
+
+const cardData = [
+    { text: "64", subText: "total number of students" },
+    { text: "12", subText: "total number of courses" },
+    { text: "$900", subText: "total amount earned" },
+    { text: "Guitar", subText: "best performing course" },
+    { text: "Flute", subText: "worst performing course" },
+];
 
 const page = () => {
     const [enrollData, setEnrollData] = useState<Enrolled[]>([]);
@@ -58,6 +67,11 @@ const page = () => {
     return (
         <div className="p-7 w-full h-screen">
             <h1 className="text-3xl font-medium text-gray-400">Overview</h1>
+            <div className="flex  justify-between mt-6">
+                {cardData?.map((el, i) => (
+                    <Card key={i} {...el} />
+                ))}
+            </div>
 
             {/* Enrolled students */}
             <div className="w-full">
@@ -71,7 +85,7 @@ const page = () => {
                 </div>
 
                 {/* Table */}
-                <div className="py-5 px-3 border rounded-lg mt-4">
+                <div className="py-5 px-3 border rounded-lg mt-4 bg-white">
                     <Table>
                         <TableHeader>
                             <TableRow>
@@ -88,22 +102,17 @@ const page = () => {
                             return (
                                 <TableBody key={i}>
                                     <TableRow>
-                                        <TableCell className="border-b">
+                                        <TableCell>
                                             {el.enrollmentNumber}
                                         </TableCell>
-                                        <TableCell className="border-b">
-                                            {el.studentName}
-                                        </TableCell>
-                                        <TableCell className="border-b">
-                                            {el.courseName}
-                                        </TableCell>
-                                        <TableCell className="border-b">
-                                            {el.fees}
-                                        </TableCell>
+                                        <TableCell>{el.studentName}</TableCell>
+                                        <TableCell>{el.courseName}</TableCell>
+                                        <TableCell>${el.fees}</TableCell>
                                         <TableCell className="text-right border-b">
                                             {el.enrollmentDate}
                                         </TableCell>
                                     </TableRow>
+                                    <hr />
                                 </TableBody>
                             );
                         })}
@@ -123,7 +132,7 @@ const page = () => {
                 </div>
 
                 {/* Table */}
-                <div className="py-5 px-3 border rounded-lg mt-4">
+                <div className="py-5 px-3 border rounded-lg mt-4 bg-white">
                     <Table>
                         <TableHeader>
                             <TableRow>
@@ -141,25 +150,18 @@ const page = () => {
                             return (
                                 <TableBody key={i}>
                                     <TableRow>
-                                        <TableCell className="border-b">
+                                        <TableCell>
                                             {el.registrationNumber}
                                         </TableCell>
-                                        <TableCell className="border-b">
-                                            {el.firstName}
-                                        </TableCell>
-                                        <TableCell className="border-b">
-                                            {el.lastName}
-                                        </TableCell>
-                                        <TableCell className="border-b">
-                                            {el.course}
-                                        </TableCell>
-                                        <TableCell className="border-b">
-                                            {el.fees}
-                                        </TableCell>
+                                        <TableCell>{el.firstName}</TableCell>
+                                        <TableCell>{el.lastName}</TableCell>
+                                        <TableCell>{el.course}</TableCell>
+                                        <TableCell>${el.fees}</TableCell>
                                         <TableCell className="text-right border-b">
                                             {el.registrationDate}
                                         </TableCell>
                                     </TableRow>
+                                    <hr />
                                 </TableBody>
                             );
                         })}
