@@ -1,9 +1,17 @@
 "use client";
 import { createContext, useState } from "react";
+import { ReactNode } from "react";
 
-export const AuthContext = createContext();
+interface ChildProp {
+    isAuth: boolean;
+    setIsAuth: any;
+    login: (token: string) => void;
+    logout: () => void;
+}
 
-export const AuthProvider = ({ children }) => {
+export const AuthContext = createContext<ChildProp | null>(null);
+
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [isAuth, setIsAuth] = useState<boolean>(false);
     const [token, setToken] = useState<string>("");
 
@@ -18,9 +26,9 @@ export const AuthProvider = ({ children }) => {
         setToken("");
     };
 
-    const value = { isAuth, setIsAuth, login, logout };
-
     return (
-        <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{ isAuth, setIsAuth, login, logout }}>
+            {children}
+        </AuthContext.Provider>
     );
 };
