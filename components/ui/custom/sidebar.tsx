@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AuthContext } from "@/context/AuthProvider";
 
 const Sidebar = () => {
-    const { token, isAuth, logout } = useContext(AuthContext);
+    const { token, isAuth, logout }:any = useContext(AuthContext);
 
     return (
         <aside

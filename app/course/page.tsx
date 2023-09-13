@@ -41,7 +41,7 @@ interface Courses {
 }
 
 const Course = () => {
-    const { isAuth } = useContext(AuthContext);
+    const { isAuth }: any = useContext(AuthContext);
     const [course, setCourses] = useState<Courses[]>([]);
     const router = useRouter();
 

@@ -42,7 +42,7 @@ const cardData = [
 ];
 
 const page = () => {
-    const { isAuth } = useContext(AuthContext);
+    const { isAuth }: any = useContext(AuthContext);
     const [enrollData, setEnrollData] = useState<Enrolled[]>([]);
     const [bestStudent, setBestStudent] = useState<BestStudent[]>([]);
     const router = useRouter();
