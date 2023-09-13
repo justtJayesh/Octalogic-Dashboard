@@ -7,7 +7,7 @@ import { useContext, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
-    const { login, isAuth } = useContext(AuthContext);
+    const { login, isAuth }: any = useContext(AuthContext);
     const [loginInput, setLoginInput] = useState({ email: "", password: "" });
     const router = useRouter();
 
@@ -121,8 +121,9 @@ const Login = () => {
                                         Register
                                     </Link>
                                 </p>
-                                <p className="text-sm font-light text-black">Hint: Login with
-                                    Reqres api id.</p>
+                                <p className="text-sm font-light text-black">
+                                    Hint: Login with Reqres api id.
+                                </p>
                             </form>
                         </div>
                     </div>
